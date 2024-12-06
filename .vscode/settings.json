@@ -42,6 +42,7 @@
     "tailwindcss",
     "Tanstack",
     "turbopack",
-    "vercel"
+    "vercel",
+    "Xata"
   ]
 }
