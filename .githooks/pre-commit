@@ -1,0 +1,14 @@
+#!/bin/sh
+set -eu
+
+# Check for unstaged changes in staged files
+if git status --short | grep --quiet '^MM'; then
+  printf '%s\n' "ERROR: Some staged files have unstaged changes" >&2
+  exit 1
+fi
+
+# Run Biome check on staged files within the src directory
+pnpm format --staged --files-ignore-unknown=true --no-errors-on-unmatched
+
+# Refresh git index
+git update-index --again
